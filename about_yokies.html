@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Yorkshire Terriers - YorkieSpot</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2C5F7C;
+            --secondary-color: #B85C8E;
+            --accent-color: #F5A623;
+            --text-dark: #333333;
+            --text-light: #666666;
+            --bg-light: #FFF9F5;
+            --bg-white: #FFFFFF;
+            --border-color: #E5E5E5;
+            --success-color: #28A745;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.8;
+            position: relative;
+        }
+
+        /* Elegant Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.05;
+            background-image:
+                radial-gradient(circle at 15% 25%, rgba(44, 95, 124, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 85% 75%, rgba(184, 92, 142, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(245, 166, 35, 0.1) 0%, transparent 50%);
+            background-size: 100% 100%;
+            pointer-events: none;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            width: 100%;
+            background: var(--bg-white);
+            border-bottom: 2px solid var(--border-color);
+            padding: 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-family: 'Playfair Display', serif;
+            transition: color 0.3s ease;
+        }
+
+        .logo:hover {
+            color: var(--secondary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 16px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-links a.active {
+            color: var(--primary-color);
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--primary-color);
+        }
+
+        .cart-icon-nav {
+            position: relative;
+            background: var(--success-color);
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .cart-icon-nav:hover {
+            background: #218838;
+            transform: scale(1.1);
+        }
+
+        .cart-icon-nav i {
+            font-size: 20px;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #DC3545;
+            color: white;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 700;
+            border: 2px solid white;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #1f4a5f 100%);
+            color: white;
+            padding: 80px 24px;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .hero-section h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero-section p {
+            font-size: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.95;
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Main Container */
+        .article-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            gap: 40px;
+            padding: 0 24px 80px;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            background: var(--bg-white);
+            padding: 60px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .content-section {
+            margin-bottom: 60px;
+            animation: fadeIn 1s ease;
+        }
+
+        .content-section:last-child {
+            margin-bottom: 0;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .content-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 24px;
+            line-height: 1.3;
+        }
+
+        .content-section p {
+            font-size: 18px;
+            color: var(--text-light);
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .content-section img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            margin: 30px 0;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .content-section img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 350px;
+            flex-shrink: 0;
+        }
+
+        .sidebar-widget {
+            background: var(--bg-white);
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+        }
+
+        .sidebar-widget h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .quick-facts {
+            list-style: none;
+        }
+
+        .quick-facts li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .quick-facts li:last-child {
+            border-bottom: none;
+        }
+
+        .quick-facts i {
+            color: var(--accent-color);
+            margin-top: 4px;
+            font-size: 18px;
+        }
+
+        .quick-facts strong {
+            color: var(--text-dark);
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .quick-facts span {
+            color: var(--text-light);
+            font-size: 15px;
+        }
+
+        /* CTA Button */
+        .cta-button {
+            display: block;
+            background: var(--success-color);
+            color: white;
+            text-decoration: none;
+            padding: 16px 32px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .cta-button:hover {
+            background: #218838;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(40, 167, 69, 0.3);
+        }
+
+        .cta-button i {
+            margin-left: 8px;
+        }
+
+        /* WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 32px;
+            right: 32px;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 24px rgba(37, 211, 102, 0.5);
+        }
+
+        .whatsapp-float i {
+            color: white;
+            font-size: 28px;
+        }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: linear-gradient(135deg, #FFF4E6 0%, #FFE8CC 100%);
+            border-left: 4px solid var(--accent-color);
+            padding: 24px;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+
+        .highlight-box p {
+            margin: 0;
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 1024px) {
+            .article-container {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+            }
+
+            .main-content {
+                padding: 40px;
+            }
+
+            .hero-section h1 {
+                font-size: 36px;
+            }
+
+            .hero-section p {
+                font-size: 18px;
+            }
+
+            .content-section h2 {
+                font-size: 28px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links a:not(.active) {
+                display: flex;
+                font-size: 10px;
+                padding: 0;
+                margin: 0;
+            }
+
+            .nav-links {
+                gap: 16px;
+            }
+
+            .hero-section {
+                padding: 60px 20px;
+            }
+
+            .hero-section h1 {
+                font-size: 32px;
+            }
+
+            .hero-section p {
+                font-size: 16px;
+            }
+
+            .main-content {
+                padding: 30px 20px;
+            }
+
+            .content-section h2 {
+                font-size: 24px;
+            }
+
+            .content-section p {
+                font-size: 16px;
+            }
+
+            .sidebar-widget {
+                padding: 24px;
+            }
+
+            .whatsapp-float {
+                bottom: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+            }
+
+            .whatsapp-float i {
+                font-size: 24px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-container {
+                padding: 0 16px;
+            }
+
+            .logo {
+                font-size: 20px;
+            }
+
+            .hero-section h1 {
+                font-size: 28px;
+            }
+
+            .content-section h2 {
+                font-size: 22px;
+            }
+
+            .article-container {
+                padding: 0 16px 40px;
+            }
+        }
+
+        /* Loading Animation */
+        .content-section {
+            opacity: 0;
+            animation: fadeInSection 0.8s ease forwards;
+        }
+
+        .content-section:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .content-section:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .content-section:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .content-section:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .content-section:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+
+        @keyframes fadeInSection {
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">YorkieSpot</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Available Yorkies</a></li>
+                <li><a href="about_yokies.html" class="active">About Yorkies</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li>
+                    <div class="cart-icon-nav" id="navCart">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count" id="cartCount">0</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <h1>Everything You Need to Know About Yorkshire Terriers</h1>
+        <p>Discover the fascinating world of these adorable, spirited companions and learn what makes Yorkies one of the
+            most beloved dog breeds in the world.</p>
+    </section>
+
+    <!-- Main Article Container -->
+    <article class="article-container">
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Section 1 -->
+            <section class="content-section">
+                <h2><i class="fas fa-paw" style="color: var(--accent-color); margin-right: 12px;"></i>Yorkshire Terrier
+                    Puppy Pictures and Facts</h2>
+                <p>
+                    Yorkshire Terrier — or Yorkie — puppies are irresistibly cute! Despite their diminutive size, these
+                    dogs are known for their bold and confident demeanor, often forgetting just how small they really
+                    are. Before you run out to your local rescue group or shelter to bring this adorable pup into your
+                    life, there are a few things to know about the breed. Keep reading to learn more about Yorkshire
+                    Terrier puppies and check out their adorable pictures below!
+                </p>
+            </section>
+
+            <!-- Section 2 -->
+            <section class="content-section">
+                <h2>The Yorkshire Terrier Was Originally Bred to Hunt Rats</h2>
+                <img src="https://dogtime.com/wp-content/uploads/sites/12/2023/07/GettyImages-1483288610-e1689900335910.jpg?w=1024"
+                    alt="Yorkshire Terrier History">
+                <p>
+                    Yorkies might seem like modern, fashionable pets, but they actually have a rich history dating back
+                    to 19th century England. These little dogs were initially bred by Scottish workers who migrated to
+                    Yorkshire during the Industrial Revolution. They were developed by crossing several Terrier breeds —
+                    including the now-extinct Paisley Terrier and the Skye Terrier — to create a small yet fierce dog
+                    adept at hunting rats in textile mills and coal mines.
+                </p>
+                <div class="highlight-box">
+                    <p><i class="fas fa-lightbulb"
+                            style="color: var(--accent-color); margin-right: 8px;"></i><strong>Did You Know?</strong>
+                        Despite their humble beginnings, Yorkies quickly caught the eye of the upper classes due to
+                        their distinctive, silky coats and spirited personalities. By the late 1860s, the Yorkshire
+                        Terrier had transitioned from a working-class ratter to a fashionable companion among the
+                        British elite.</p>
+                </div>
+            </section>
+
+            <!-- Section 3 -->
+            <section class="content-section">
+                <h2>Yorkie Puppies Are Tiny and Fragile</h2>
+                <img src="https://dogtime.com/wp-content/uploads/sites/12/2024/07/IMG_2547-e1720124874817.jpeg?w=1024"
+                    alt="Tiny Yorkie Puppy">
+                <p>
+                    How can you look at a Yorkie puppy and not want to hug 'em and squeeze 'em? They are just so
+                    stinkin' adorable and tiny! Weighing only a few ounces at birth, they usually fit comfortably in the
+                    palm of your hand. Even as adults, they rarely exceed 7 pounds. Their compact size makes them
+                    irresistibly cute, but it also means they're very fragile. Excessive handling by small children or
+                    an accidental unwatched step can be life-threatening for a Yorkie.
+                </p>
+                <p>
+                    What's more, while Yorkshire Terriers already fall on the smaller end of the spectrum, there's an
+                    even tinier version known as the Teacup Yorkie. These petite pups weigh under 4 pounds and are often
+                    bred for their exceptionally small size. Notably, Teacup Yorkie puppies require extra care and
+                    attention due to their fragile bones and higher susceptibility to certain health issues.
+                </p>
+            </section>
+
+            <!-- Section 4 -->
+            <section class="content-section">
+                <h2>These Puppies Act Way Bigger Than They Actually Are</h2>
+                <img src="https://dogtime.com/wp-content/uploads/sites/12/2023/07/GettyImages-476582061.jpg?w=1024"
+                    alt="Brave Yorkie">
+                <p>
+                    Don't be surprised if your tiny Yorkie puppy tries to take on a dog ten times their size. Yes,
+                    Napoleon Complexes don't just exist in humans; Yorkies have them, too. These dogs have a bravery
+                    that far exceeds their physical stature. Since they were originally bred as ratters, their boldness
+                    was necessary for catching vermin. Today, this fearless attitude translates into a confident, often
+                    assertive pet.
+                </p>
+                <p>
+                    Yorkies also make excellent watchdogs. They are known to be protective of their owners and will
+                    alert you to any potential threats. Just be prepared to manage their big-dog-in-a-small-body
+                    mentality. To safeguard your Yorkshire Terrier puppy from trouble, they should always be kept on a
+                    leash while walking.
+                </p>
+            </section>
+
+            <!-- Section 5 -->
+            <section class="content-section">
+                <h2>Yorkshire Terrier Puppies Are Born With a Different Coat Color</h2>
+                <img src="https://dogtime.com/wp-content/uploads/sites/12/2024/07/IMG_2543-e1720125112200.jpeg?w=1024"
+                    alt="Yorkie Puppy Coat">
+                <p>
+                    Yorkshire Terrier puppies don't sport the sleek, steel-blue and tan coat of their adult counterparts
+                    right from birth. They're usually born black with tan points on their face, chest, and paws. As they
+                    grow older, their coat colors gradually change, usually lightening to the characteristic blue and
+                    gold or blue and tan hues. This transformation can take up to two years to fully complete. Not only
+                    that, their coat texture also changes from a fluffier puppy coat to the silky, fine hair that adult
+                    Yorkies are known for.
+                </p>
+            </section>
+
+            <!-- Section 6 -->
+            <section class="content-section">
+                <h2>Buying a Yorkie Puppy From a Breeder Will Cost You a Lot</h2>
+                <img src="https://dogtime.com/wp-content/uploads/sites/12/2024/07/IMG_2544-e1720125059905.jpeg?w=1024"
+                    alt="Yorkie Pricing">
+                <p>
+                    The charm and playful nature of Yorkshire Terriers come at a premium. Typically, you can expect to
+                    pay anywhere from $500 to $4,000 for a purebred Yorkie puppy, depending on factors such as lineage,
+                    breeder reputation, and location. This high price is largely due to their popularity and the
+                    meticulous breeding practices required to maintain their desirable traits.
+                </p>
+                <div class="highlight-box">
+                    <p><i class="fas fa-heart"
+                            style="color: var(--accent-color); margin-right: 8px;"></i><strong>Consider
+                            Adoption!</strong> Adoption is a wonderful alternative to buying a Yorkie puppy. Many loving
+                        dogs, including purebred Yorkies or Yorkie mixes, are in shelters and rescue organizations
+                        waiting for a forever home. Adopting is not only cost-effective — usually around $50 to $300 —
+                        but it also gives a deserving animal a second chance at happiness.</p>
+                </div>
+            </section>
+
+            <!-- Section 7 -->
+            <section class="content-section">
+                <h2>As a Hypoallergenic Dog Breed, Yorkshire Terriers Shed Very Little</h2>
+                <img src="https://dogtime.com/wp-content/uploads/sites/12/2023/07/GettyImages-647607816.jpg?w=1024"
+                    alt="Yorkie Grooming">
+                <p>
+                    Despite their luxurious, flowing locks, fur cleanup is not a huge issue with Yorkies. Yorkshire
+                    Terriers actually have a single layer of fine hair — not fur — that will shed very much like a
+                    human's. They may naturally lose a few strands during grooming or petting, but they will not start
+                    to form literal hairballs that find their way under your couch.
+                </p>
+                <p>
+                    The hair will also continue to grow until you get it cut, which is why many Yorkshire Terriers who
+                    compete in dog shows have floor-length coats. This special, low-shedding coat also makes them a
+                    better option for people who suffer from allergies.
+                </p>
+            </section>
+
+            <!-- Section 8 -->
+            <section class="content-section">
+                <h2>Yorkie Puppies Make All Kinds of Goofy Noises</h2>
+                <img src="https://dogtime.com/wp-content/uploads/sites/12/2024/07/IMG_2545-e1720124988847.jpeg"
+                    alt="Yorkie Making Sounds">
+                <p>
+                    If you're looking for a quiet puppy, a Yorkshire Terrier might not be your best match. These
+                    pint-sized pups are known for their yappy nature and will often bark, whine, or make other goofy
+                    noises to alert you of strangers or animals, or even just to get your attention.
+                </p>
+                <p>
+                    What's more, they're especially prone to pharyngeal gag reflex or reverse sneezing. This sounds like
+                    the dog is gasping for air and making a honking noise at the same time. It can be a little alarming
+                    to witness, but it usually passes after a few minutes.
+                </p>
+            </section>
+
+            <!-- Section 9 -->
+            <section class="content-section">
+                <h2>Yorkies Are Fashionable Dogs</h2>
+                <img src="https://dogtime.com/wp-content/uploads/sites/12/2024/07/IMG_2548-e1720124806597.jpeg?w=1024"
+                    alt="Fashionable Yorkie">
+                <p>
+                    With their silky coats and endearing expressions, Yorkies often find themselves in the spotlight
+                    when it comes to dog fashion. They love being pampered and don't mind dressing up for special
+                    occasions. From stylish sweaters to elegant bows, these little dogs can pull off almost any look. A
+                    Yorkie's coat can also be groomed into various styles, from a classic puppy cut to a long, flowing
+                    show coat. It's no wonder they frequently grace the pages of doggy fashion magazines and social
+                    media posts. Yorkies are truly the supermodels of the dog world!
+                </p>
+            </section>
+
+            <!-- Section 10 -->
+            <section class="content-section">
+                <h2>Yorkshire Terrier Puppies Are Intelligent, Making Them Easy to Train</h2>
+                <img src="https://dogtime.com/wp-content/uploads/sites/12/2024/07/IMG_2542-e1720125170330.jpeg"
+                    alt="Smart Yorkie">
+                <p>
+                    Yorkshire Terrier puppies are incredibly intelligent and quick learners. They pick up commands and
+                    tricks faster than many other breeds, making training a relatively smooth process. As such, early
+                    socialization and training are crucial to channel their intelligence and energy positively. The
+                    downside? Their cleverness can sometimes lead to mischief if they're not sufficiently challenged, so
+                    it's essential to keep their environments engaging and stimulating.
+                </p>
+                <p>
+                    Yorkshire Terrier puppies have a flair for the finer things in life. They love to be spoiled,
+                    whether it's through regular grooming, comfy beds, or stylish outfits. In fact, they seem to enjoy
+                    the attention and often act like little divas. However, this also means they thrive on human
+                    interaction and can become quite attached to their pet parents. They love to be included in family
+                    activities and can get lonely if left alone for extended periods. Treating them to a grooming
+                    session or a cuddle on the couch will make your Yorkie puppy one very happy camper.
+                </p>
+            </section>
+        </div>
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <!-- Quick Facts Widget -->
+            <div class="sidebar-widget">
+                <h3>Quick Facts</h3>
+                <ul class="quick-facts">
+                    <li>
+                        <i class="fas fa-weight"></i>
+                        <div>
+                            <strong>Weight</strong>
+                            <span>4-7 pounds (adult)</span>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-ruler-vertical"></i>
+                        <div>
+                            <strong>Height</strong>
+                            <span>7-8 inches</span>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <strong>Lifespan</strong>
+                            <span>13-16 years</span>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-palette"></i>
+                        <div>
+                            <strong>Colors</strong>
+                            <span>Blue & Gold, Black & Tan, Parti-Color</span>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-child"></i>
+                        <div>
+                            <strong>Good with Kids</strong>
+                            <span>Best with older children</span>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-cut"></i>
+                        <div>
+                            <strong>Grooming</strong>
+                            <span>High maintenance</span>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-running"></i>
+                        <div>
+                            <strong>Energy Level</strong>
+                            <span>Moderate to High</span>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-brain"></i>
+                        <div>
+                            <strong>Intelligence</strong>
+                            <span>Very High</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- CTA Widget -->
+            <div class="sidebar-widget">
+                <h3>Ready for a Yorkie?</h3>
+                <p style="color: var(--text-light); font-size: 15px; margin-bottom: 20px;">
+                    Browse our selection of adorable Yorkshire Terrier puppies waiting for their forever homes!
+                </p>
+                <a href="index.html" class="cta-button">
+                    View Available Puppies <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- Contact Widget -->
+            <div class="sidebar-widget">
+                <h3>Have Questions?</h3>
+                <p style="color: var(--text-light); font-size: 15px; margin-bottom: 20px;">
+                    Our Puppy Concierges are here to help you find the perfect Yorkie companion!
+                </p>
+                <a href="#" class="cta-button" style="background: var(--primary-color);" id="contactWhatsApp">
+                    <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+                </a>
+            </div>
+        </aside>
+    </article>
+
+    <!-- WhatsApp Floating Button -->
+    <div class="whatsapp-float" id="whatsappFloat">
+        <i class="fab fa-whatsapp"></i>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // WhatsApp Number
+        const WHATSAPP_NUMBER = "+16692480001";
+
+        // WhatsApp Float Button
+        document.getElementById('whatsappFloat').addEventListener('click', () => {
+            const message = encodeURIComponent('Hi! I would like to inquire about your available Yorkshire Terrier puppies.');
+            const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
+            window.open(url, '_blank');
+        });
+
+        // Sidebar Contact Button
+        document.getElementById('contactWhatsApp').addEventListener('click', (e) => {
+            e.preventDefault();
+            const message = encodeURIComponent('Hi! I have some questions about Yorkshire Terriers. Can you help me?');
+            const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
+            window.open(url, '_blank');
+        });
+
+        // Cart Navigation (placeholder - can be connected to main index.html cart)
+        document.getElementById('navCart').addEventListener('click', () => {
+            window.location.href = 'index.html#cart';
+        });
+
+        // Smooth scroll for better UX
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

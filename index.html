@@ -1,0 +1,1362 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Available Yorkie Puppies - YorkieSpot</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- CSS Styles -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #FFF9F5;
+            color: #333333;
+            line-height: 1.6;
+            position: relative;
+        }
+
+        /* Stylish Background Pattern */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.08;
+            background-image:
+                radial-gradient(circle at 20% 30%, rgba(255, 182, 193, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(173, 216, 230, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(255, 218, 185, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 90% 20%, rgba(221, 160, 221, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 10% 90%, rgba(255, 240, 245, 0.3) 0%, transparent 50%);
+            background-size: 100% 100%;
+            pointer-events: none;
+        }
+
+        /* Paw Print Pattern */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%232C5F7C' fill-opacity='1'%3E%3Cpath d='M20 25c-1.7 0-3-1.3-3-3s1.3-3 3-3 3 1.3 3 3-1.3 3-3 3zm8-8c-1.7 0-3-1.3-3-3s1.3-3 3-3 3 1.3 3 3-1.3 3-3 3zm8 8c-1.7 0-3-1.3-3-3s1.3-3 3-3 3 1.3 3 3-1.3 3-3 3zm-8 4c-2.2 0-4 1.8-4 4s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4z'/%3E%3C/g%3E%3C/svg%3E");
+            background-size: 200px 200px;
+            pointer-events: none;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            width: 100%;
+            background: #FFFFFF;
+            border-bottom: 2px solid #E5E5E5;
+            padding: 0;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #2C5F7C;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333333;
+            font-size: 16px;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: #2C5F7C;
+        }
+
+        .nav-links a.active {
+            color: #2C5F7C;
+            border-bottom: 2px solid #2C5F7C;
+            padding-bottom: 4px;
+        }
+
+        .cart-icon-nav {
+            position: relative;
+            background: #28A745;
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .cart-icon-nav:hover {
+            background: #218838;
+            transform: scale(1.1);
+        }
+
+        .cart-icon-nav i {
+            font-size: 20px;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #DC3545;
+            color: white;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 700;
+            border: 2px solid white;
+        }
+
+        /* Welcome Banner */
+        .welcome-banner {
+            background: #4e504e63;
+            border: 1px solid #C3E6CB;
+            padding: 32px;
+            max-width: 1400px;
+        }
+
+        /* Container for the banner */
+        .welcome-banner-bg-vid {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+            color: white;
+        }
+
+        /* Background video */
+        .welcome-banner-bg-vid .bg-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        /* Overlay content */
+        .welcome-banner {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            text-align: center;
+            padding: 0 1.5rem;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+        }
+
+        .welcome-banner h2 {
+            font-size: 30px;
+            font-weight: 700;
+            color: #2C5F7C;
+            margin-bottom: 16px;
+        }
+
+        .welcome-banner p {
+            font-size: 20px;
+            font-weight: 900;
+            color: #e3e6e3;
+            line-height: 1.8;
+        }
+
+        /* Main Layout - ENHANCED DESIGN */
+        .main-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            gap: 32px;
+            padding: 32px 24px;
+            position: relative;
+
+            /* Beautiful gradient background */
+            background: linear-gradient(135deg,
+                    rgba(255, 249, 245, 0.95) 0%,
+                    rgba(240, 248, 255, 0.95) 25%,
+                    rgba(255, 245, 238, 0.95) 50%,
+                    rgba(245, 250, 255, 0.95) 75%,
+                    rgba(255, 249, 245, 0.95) 100%);
+
+            /* Subtle box shadow for depth */
+            box-shadow:
+                0 10px 40px rgba(44, 95, 124, 0.08),
+                0 2px 8px rgba(0, 0, 0, 0.04);
+
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        /* Decorative pattern overlay for main-container */
+        .main-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0.15;
+            pointer-events: none;
+            background-image:
+                radial-gradient(circle at 15% 15%, rgba(44, 95, 124, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 85% 85%, rgba(184, 92, 142, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, rgba(40, 167, 69, 0.08) 0%, transparent 50%);
+            background-size: 100% 100%;
+            z-index: 0;
+        }
+
+        /* Subtle geometric pattern */
+        .main-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0.04;
+            pointer-events: none;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 0 L100 50 L50 100 L0 50 Z' fill='%232C5F7C' fill-opacity='0.3'/%3E%3Ccircle cx='50' cy='50' r='30' fill='%23B85C8E' fill-opacity='0.2'/%3E%3C/svg%3E");
+            background-size: 150px 150px;
+            z-index: 0;
+        }
+
+        /* Ensure content is above decorative layers */
+        .main-container>* {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Sidebar Filter */
+        .sidebar {
+            width: 240px;
+            flex-shrink: 0;
+        }
+
+        .filter-container {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border: 2px solid #2C5F7C;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(44, 95, 124, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .filter-container:hover {
+            box-shadow: 0 6px 20px rgba(44, 95, 124, 0.15);
+            transform: translateY(-2px);
+        }
+
+        /* Filter Menu Button (hidden on desktop) */
+        .filter-menu-btn {
+            display: none;
+            background: linear-gradient(135deg, #2C5F7C 0%, #1f4a5f 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-bottom: 20px;
+            width: 100%;
+            transition: all 0.3s ease;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 4px 12px rgba(44, 95, 124, 0.2);
+        }
+
+        .filter-menu-btn:hover {
+            background: linear-gradient(135deg, #1f4a5f 0%, #2C5F7C 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(44, 95, 124, 0.3);
+        }
+
+        .filter-menu-btn i {
+            transition: transform 0.3s ease;
+        }
+
+        .filter-menu-btn.active i {
+            transform: rotate(180deg);
+        }
+
+        .filter-section {
+            margin-bottom: 24px;
+        }
+
+        .filter-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .filter-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #2C5F7C;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .filter-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .filter-option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            padding: 6px;
+            border-radius: 4px;
+            transition: background 0.2s ease;
+        }
+
+        .filter-option:hover {
+            background: rgba(44, 95, 124, 0.1);
+        }
+
+        .filter-option input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .filter-option label {
+            cursor: pointer;
+            font-size: 14px;
+            color: #333333;
+        }
+
+        /* Main Content */
+        .content {
+            flex: 1;
+        }
+
+        .content-header {
+            margin-bottom: 24px;
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(5px);
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid #2C5F7C;
+        }
+
+        .content-header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #2C5F7C;
+            margin-bottom: 12px;
+        }
+
+        .results-count {
+            font-size: 15px;
+            color: #666666;
+        }
+
+        /* Puppy Grid - 4 per row, responsive */
+        .puppy-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-bottom: 50px;
+        }
+
+        @media (max-width: 1200px) {
+            .puppy-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 900px) {
+            .puppy-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .puppy-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .puppy-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 2px solid #E5E5E5;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .puppy-card:hover {
+            background: rgba(227, 242, 253, 0.95);
+            border-color: #2C5F7C;
+            transform: translateY(-6px);
+            box-shadow: 0 12px 24px rgba(44, 95, 124, 0.2);
+        }
+
+        .puppy-image-container {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #E8E8E8 0%, #D0D0D0 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .puppy-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .puppy-card:hover .puppy-image {
+            transform: scale(1.1);
+        }
+
+        .puppy-image-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 64px;
+            color: #999;
+        }
+
+        .puppy-info {
+            padding: 16px;
+        }
+
+        .puppy-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .puppy-name {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333333;
+        }
+
+        .gender-cart {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .gender-badge {
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .gender-male {
+            background: #2C5F7C;
+            color: white;
+        }
+
+        .gender-female {
+            background: #B85C8E;
+            color: white;
+        }
+
+        .add-to-cart-btn {
+            background: #28A745;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .add-to-cart-btn:hover {
+            background: #218838;
+            transform: scale(1.05);
+        }
+
+        .add-to-cart-btn i {
+            font-size: 14px;
+        }
+
+        .puppy-price {
+            font-size: 20px;
+            font-weight: 700;
+            color: #2C5F7C;
+            margin-bottom: 8px;
+        }
+
+        /* Dropdown Details */
+        .puppy-details-dropdown {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background: #FFFFFF;
+            margin-top: 12px;
+            border-radius: 6px;
+            padding: 0;
+        }
+
+        .puppy-card:hover .puppy-details-dropdown {
+            max-height: 300px;
+            padding: 16px;
+            border: 1px solid #2C5F7C;
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #E5E5E5;
+            font-size: 14px;
+        }
+
+        .detail-row:last-child {
+            border-bottom: none;
+        }
+
+        .detail-label {
+            font-weight: 600;
+            color: #333333;
+        }
+
+        .detail-value {
+            color: #666666;
+        }
+
+        /* Customer Reviews Section */
+        .reviews-section {
+            max-width: 1400px;
+            margin: 60px auto;
+            padding: 0 24px;
+        }
+
+        .reviews-section h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #333333;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .review-card {
+            background: #F8F9FA;
+            border: 1px solid #E5E5E5;
+            border-radius: 8px;
+            padding: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .review-card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .stars {
+            color: #FFC107;
+            font-size: 18px;
+            margin-bottom: 12px;
+        }
+
+        .review-text {
+            font-size: 15px;
+            color: #666666;
+            margin-bottom: 16px;
+            line-height: 1.6;
+        }
+
+        .reviewer-name {
+            font-weight: 600;
+            color: #333333;
+            font-size: 14px;
+        }
+
+        /* CEO Message Section */
+        .ceo-section {
+            max-width: 100%;
+            margin: 60px auto;
+            padding: 40px 24px;
+            text-align: center;
+            background-color: #333333;
+        }
+
+        .ceo-section h2 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #2C5F7C;
+            margin-bottom: 24px;
+        }
+
+        .ceo-message {
+            font-size: 17px;
+            color: #555555;
+            line-height: 1.8;
+            margin-bottom: 32px;
+            font-style: italic;
+        }
+
+        .ceo-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #2C5F7C 0%, #5A9FBD 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            border: 4px solid #E5E5E5;
+        }
+
+        /* WhatsApp Floating Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 32px;
+            right: 32px;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 24px rgba(37, 211, 102, 0.5);
+        }
+
+        .whatsapp-float i {
+            color: white;
+            font-size: 28px;
+        }
+
+        /* Custom Modal */
+        .custom-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            animation: fadeIn 0.2s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .modal-content {
+            background: #FFFFFF;
+            padding: 24px;
+            border-radius: 8px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-message {
+            color: #333333;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .modal-button {
+            background: #2C5F7C;
+            color: white;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .modal-button:hover {
+            background: #1f4a5f;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 1024px) {
+            .main-container {
+                flex-direction: column;
+                padding: 24px 16px;
+                border-radius: 12px;
+                margin: 0 8px;
+            }
+
+            .sidebar {
+                width: 100%;
+                position: relative;
+            }
+
+            /* Show filter menu button on tablet/mobile */
+            .filter-menu-btn {
+                display: flex;
+            }
+
+            /* Hide filter container by default on mobile */
+            .filter-container {
+                max-height: 0;
+                overflow: hidden;
+                padding: 0;
+                border: none;
+                transition: all 0.4s ease;
+                background: rgba(26, 26, 26, 0.95);
+                backdrop-filter: blur(10px);
+            }
+
+            /* Show filter container when active */
+            .filter-container.active {
+                max-height: 1000px;
+                padding: 20px;
+                border: 2px solid #2C5F7C;
+                margin-top: 10px;
+            }
+
+            /* Dark theme for mobile filters */
+            .filter-container.active {
+                background: rgba(26, 26, 26, 0.95);
+            }
+
+            .filter-container.active .filter-title {
+                color: #5A9FBD;
+            }
+
+            .filter-container.active .filter-option label {
+                color: #E5E5E5;
+            }
+
+            .filter-container.active .filter-option:hover {
+                background: rgba(90, 159, 189, 0.2);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-container {
+                padding: 20px 12px;
+                border-radius: 8px;
+            }
+
+            .nav-links a:not(.active) {
+                display: flex;
+                font-size: 10px;
+                padding: 0;
+                margin: 0;
+            }
+
+            .welcome-banner {
+                padding: 20px;
+            }
+
+            .welcome-banner h2 {
+                font-size: 22px;
+            }
+
+            .welcome-banner p {
+                font-size: 15px;
+            }
+
+            .content-header {
+                padding: 16px;
+            }
+
+            .content-header h1 {
+                font-size: 24px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-container {
+                padding: 16px 8px;
+                gap: 20px;
+            }
+
+            .whatsapp-float {
+                bottom: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+            }
+
+            .whatsapp-float i {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">YorkieSpot</a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Available Yorkies</a></li>
+                <li><a href="about_yokies.html">About Yorkies</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li>
+                    <div class="cart-icon-nav" id="navCart">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count" id="cartCount">0</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Welcome Banner -->
+    <div class="welcome-banner-bg-vid">
+        <!--Background Video -->
+
+        <video class="bg-video" autoplay muted loop>
+            <source src="https://cdn.pixabay.com/video/2024/07/24/222838_large.mp4" type="video/mp4">
+        </video>
+
+        <div class="welcome-banner">
+            <h2>Available Yorkshire Terrier Puppies</h2>
+            <p>
+                Welcome to YorkieSpot! Browse our incredible selection of adorable Yorkshire Terrier puppies ready for
+                their forever homes.
+                We only work with the country's top Yorkie breeders, offer three handle with care delivery options and a
+                10-year health commitment.
+                So wherever you live we can deliver your perfect Yorkie puppy! Complimentary consultations with one of
+                our
+                Puppy Concierges are available when you're ready.
+            </p>
+        </div>
+    </div>
+
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Sidebar Filter -->
+        <aside class="sidebar">
+            <button class="filter-menu-btn" id="filterMenuBtn">
+                <i class="fas fa-filter"></i>
+                <span>Filter Puppies</span>
+                <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="filter-container" id="filterContainer">
+                <div class="filter-section">
+                    <h3 class="filter-title">Gender</h3>
+                    <div class="filter-options">
+                        <div class="filter-option">
+                            <input type="checkbox" id="filter-male" value="male">
+                            <label for="filter-male">Male</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="filter-female" value="female">
+                            <label for="filter-female">Female</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="filter-section">
+                    <h3 class="filter-title">Color</h3>
+                    <div class="filter-options">
+                        <div class="filter-option">
+                            <input type="checkbox" id="color-blue-gold" value="Blue & Gold">
+                            <label for="color-blue-gold">Blue & Gold</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="color-black-gold" value="Black & Gold">
+                            <label for="color-black-gold">Black & Gold</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="color-blue-tan" value="Blue & Tan">
+                            <label for="color-blue-tan">Blue & Tan</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="color-black-tan" value="Black & Tan">
+                            <label for="color-black-tan">Black & Tan</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="color-parti" value="Parti-Color">
+                            <label for="color-parti">Parti-Color</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="filter-section">
+                    <h3 class="filter-title">Age</h3>
+                    <div class="filter-options">
+                        <div class="filter-option">
+                            <input type="checkbox" id="age-6-8" value="6-8">
+                            <label for="age-6-8">6-8 weeks</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="age-9-12" value="9-12">
+                            <label for="age-9-12">9-12 weeks</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="age-13+" value="13+">
+                            <label for="age-13+">13+ weeks</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="filter-section">
+                    <h3 class="filter-title">Size</h3>
+                    <div class="filter-options">
+                        <div class="filter-option">
+                            <input type="checkbox" id="size-teacup" value="Teacup">
+                            <label for="size-teacup">Teacup (2-4 lbs)</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="size-standard" value="Standard">
+                            <label for="size-standard">Standard (4-7 lbs)</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="content">
+            <div class="content-header">
+                <h1>Browse Our Yorkshire Terrier Puppies</h1>
+                <p class="results-count"><span id="resultsCount">36</span> Yorkie puppies available</p>
+            </div>
+
+            <div class="puppy-grid" id="puppyGrid">
+                <!-- Puppies will be generated by JavaScript -->
+            </div>
+        </main>
+    </div>
+
+    <!-- Customer Reviews Section -->
+    <section class="reviews-section">
+        <h2>What Our Customers Say</h2>
+        <div class="reviews-grid">
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <p class="review-text">
+                    "We got our little Yorkie puppy from YorkieSpot and couldn't be happier! She's healthy, playful, and
+                    so adorable.
+                    The entire process was smooth and professional. Highly recommend!"
+                </p>
+                <p class="reviewer-name">— Sarah Johnson</p>
+            </div>
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <p class="review-text">
+                    "Amazing experience! Our Yorkie arrived healthy and well-socialized. The Puppy Concierge was so
+                    helpful
+                    throughout the entire process. We love our new family member!"
+                </p>
+                <p class="reviewer-name">— Michael Chen</p>
+            </div>
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <p class="review-text">
+                    "The 10-year health commitment gave us peace of mind. Our Yorkie puppy came with all vaccinations up
+                    to
+                    date and the delivery was handled with such care. Excellent service!"
+                </p>
+                <p class="reviewer-name">— Emily Rodriguez</p>
+            </div>
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <p class="review-text">
+                    "YorkieSpot made our dream of having a Yorkshire Terrier come true! The process was transparent,
+                    and we felt supported every step of the way. Our Yorkie is perfect!"
+                </p>
+                <p class="reviewer-name">— David Thompson</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CEO Message Section -->
+    <section class="ceo-section">
+        <h2>A Message from Our CEO</h2>
+        <p class="ceo-message">
+            "At YorkieSpot, our Scientific Advisory Board sets science-based standards to ensure the health and welfare
+            of breeding Yorkshire Terriers and their puppies.
+            Our expertise helps maintain our commitment to responsible breeding and the long-term well-being of every
+            Yorkie puppy in our network."
+        </p>
+        <div class="ceo-image">
+            👨‍💼
+        </div>
+    </section>
+
+    <!-- WhatsApp Floating Button -->
+    <div class="whatsapp-float" id="whatsappFloat">
+        <i class="fab fa-whatsapp"></i>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // ========================================
+        // DATA - Yorkshire Terrier Puppies (36 UNIQUE PUPPIES)
+        // ========================================
+        const puppies = [
+            // Row 1
+            { id: 0, name: "Bella", breed: "Yorkshire Terrier", gender: "female", age: "8 weeks", price: "$1,800", image: "https://images.unsplash.com/photo-1588943211346-0908a1fb0b01?w=400&h=400&fit=crop", weight: "2.5 lbs", color: "Blue & Gold", vaccination: "Up to date", size: "Teacup" },
+            { id: 1, name: "Max", breed: "Yorkshire Terrier", gender: "male", age: "10 weeks", price: "$1,650", image: "https://i.pinimg.com/736x/ae/68/a6/ae68a6f94e5f6742ae83fbd57c5049f1.jpg", weight: "3 lbs", color: "Black & Gold", vaccination: "Up to date", size: "Teacup" },
+            { id: 2, name: "Lucy", breed: "Yorkshire Terrier", gender: "female", age: "12 weeks", price: "$1,500", image: "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=400&h=400&fit=crop", weight: "4 lbs", color: "Blue & Tan", vaccination: "Up to date", size: "Standard" },
+            { id: 3, name: "Charlie", breed: "Yorkshire Terrier", gender: "male", age: "9 weeks", price: "$1,750", image: "https://allaboutpuppiesflorida.com/wp-content/uploads/2022/10/IMG-1556-1305x1536.jpg", weight: "2.8 lbs", color: "Black & Tan", vaccination: "Up to date", size: "Teacup" },
+
+            // Row 2
+            { id: 4, name: "Daisy", breed: "Yorkshire Terrier", gender: "female", age: "11 weeks", price: "$1,900", image: "https://cdn.greenfieldpuppies.com/wp-content/uploads/2025/03/three-yorkie-puppies-sitting-in-grass-800x800.jpeg", weight: "3.2 lbs", color: "Blue & Gold", vaccination: "Up to date", size: "Teacup" },
+            { id: 5, name: "Cooper", breed: "Yorkshire Terrier", gender: "male", age: "7 weeks", price: "$1,600", image: "https://images.unsplash.com/photo-1560807707-8cc77767d783?w=400&h=400&fit=crop", weight: "2.3 lbs", color: "Black & Gold", vaccination: "Up to date", size: "Teacup" },
+            { id: 6, name: "Sophie", breed: "Yorkshire Terrier", gender: "female", age: "9 weeks", price: "$2,000", image: "https://i.pinimg.com/736x/e9/3e/69/e93e69db70fafaf363dd8fa9e8a5c6b3.jpg", weight: "5 lbs", color: "Parti-Color", vaccination: "Up to date", size: "Standard" },
+            { id: 7, name: "Rocky", breed: "Yorkshire Terrier", gender: "male", age: "8 weeks", price: "$1,700", image: "https://i.pinimg.com/1200x/38/8e/83/388e831b2273f7664ce696fe7586c00e.jpg", weight: "3.5 lbs", color: "Blue & Tan", vaccination: "Up to date", size: "Standard" },
+
+            // Row 3
+            { id: 8, name: "Chloe", breed: "Yorkshire Terrier", gender: "female", age: "14 weeks", price: "$1,400", image: "https://i.pinimg.com/1200x/67/49/fd/6749fd45d379edb0846674cb61fc4a77.jpg", weight: "5.5 lbs", color: "Black & Tan", vaccination: "Up to date", size: "Standard" },
+            { id: 9, name: "Oliver", breed: "Yorkshire Terrier", gender: "male", age: "10 weeks", price: "$1,850", image: "https://dogtime.com/wp-content/uploads/sites/12/2023/07/GettyImages-1483288610-e1689900335910.jpg?w=1024", weight: "3.8 lbs", color: "Blue & Gold", vaccination: "Up to date", size: "Standard" },
+            { id: 10, name: "Mia", breed: "Yorkshire Terrier", gender: "female", age: "8 weeks", price: "$1,950", image: "https://dogtime.com/wp-content/uploads/sites/12/2024/07/IMG_2545-e1720124988847.jpeg", weight: "2.7 lbs", color: "Black & Gold", vaccination: "Up to date", size: "Teacup" },
+            { id: 11, name: "Jack", breed: "Yorkshire Terrier", gender: "male", age: "11 weeks", price: "$1,550", image: "https://dogtime.com/wp-content/uploads/sites/12/2023/07/GettyImages-476582061.jpg?w=1024", weight: "4.2 lbs", color: "Blue & Tan", vaccination: "Up to date", size: "Standard" },
+
+            // Row 4
+            { id: 12, name: "Lily", breed: "Yorkshire Terrier", gender: "female", age: "7 weeks", price: "$1,800", image: "https://dogtime.com/wp-content/uploads/sites/12/2024/07/IMG_2543-e1720125112200.jpeg?w=1024", weight: "2.4 lbs", color: "Blue & Gold", vaccination: "Up to date", size: "Teacup" },
+            { id: 13, name: "Duke", breed: "Yorkshire Terrier", gender: "male", age: "13 weeks", price: "$1,450", image: "https://dogtime.com/wp-content/uploads/sites/12/2024/07/IMG_2548-e1720124806597.jpeg?w=1024", weight: "5.8 lbs", color: "Black & Tan", vaccination: "Up to date", size: "Standard" },
+            { id: 14, name: "Molly", breed: "Yorkshire Terrier", gender: "female", age: "9 weeks", price: "$1,750", image: "https://dogtime.com/wp-content/uploads/sites/12/2024/07/IMG_2542-e1720125170330.jpeg", weight: "3.1 lbs", color: "Parti-Color", vaccination: "Up to date", size: "Teacup" },
+            { id: 15, name: "Teddy", breed: "Yorkshire Terrier", gender: "male", age: "8 weeks", price: "$1,700", image: "https://thehappypuppysite.com/wp-content/uploads/2017/02/Teacup-Yorkies-The-World_s-Smallest-Dog-HP-long.jpg", weight: "3.3 lbs", color: "Blue & Tan", vaccination: "Up to date", size: "Standard" },
+
+            // Row 5
+            { id: 16, name: "Penny", breed: "Yorkshire Terrier", gender: "female", age: "10 weeks", price: "$1,900", image: "https://i.pinimg.com/736x/c5/f3/f2/c5f3f2c9af692b9333dd18ee9e26b890.jpg", weight: "2.9 lbs", color: "Black & Gold", vaccination: "Up to date", size: "Teacup" },
+            { id: 17, name: "Leo", breed: "Yorkshire Terrier", gender: "male", age: "12 weeks", price: "$1,600", image: "https://i.pinimg.com/736x/17/e3/e5/17e3e5a6d4d39355590fd1e558e56860.jpg", weight: "4.5 lbs", color: "Blue & Gold", vaccination: "Up to date", size: "Standard" },
+            { id: 18, name: "Ruby", breed: "Yorkshire Terrier", gender: "female", age: "8 weeks", price: "$2,000", image: "https://i.pinimg.com/736x/58/fd/b0/58fdb0293e9de268e7d7354f2424b973.jpg", weight: "2.6 lbs", color: "Blue & Tan", vaccination: "Up to date", size: "Teacup" },
+            { id: 19, name: "Milo", breed: "Yorkshire Terrier", gender: "male", age: "9 weeks", price: "$1,650", image: "https://i.pinimg.com/736x/34/32/cb/3432cbfb0fc99d172c9ae4b18df112f8.jpg", weight: "3.4 lbs", color: "Black & Tan", vaccination: "Up to date", size: "Standard" },
+
+            // Row 6
+            { id: 20, name: "Rosie", breed: "Yorkshire Terrier", gender: "female", age: "11 weeks", price: "$1,850", image: "https://i.pinimg.com/1200x/d6/c5/39/d6c539d764c1cc650037f590451e7307.jpg", weight: "4.8 lbs", color: "Parti-Color", vaccination: "Up to date", size: "Standard" },
+            { id: 21, name: "Toby", breed: "Yorkshire Terrier", gender: "male", age: "7 weeks", price: "$1,750", image: "https://i.pinimg.com/1200x/2f/28/8c/2f288cb93c20673620fba1f38fad5ff4.jpg", weight: "2.5 lbs", color: "Blue & Gold", vaccination: "Up to date", size: "Teacup" },
+            { id: 22, name: "Gracie", breed: "Yorkshire Terrier", gender: "female", age: "14 weeks", price: "$1,400", image: "https://i.pinimg.com/1200x/6d/f4/8b/6df48bdc93329c8014db034f68911d6f.jpg", weight: "6.2 lbs", color: "Black & Gold", vaccination: "Up to date", size: "Standard" },
+            { id: 23, name: "Oscar", breed: "Yorkshire Terrier", gender: "male", age: "10 weeks", price: "$1,700", image: "https://i.pinimg.com/736x/3a/f2/4d/3af24d600646b405f6a714ec23814f22.jpg", weight: "3.6 lbs", color: "Blue & Tan", vaccination: "Up to date", size: "Standard" },
+
+            // Row 7
+            { id: 24, name: "Zoey", breed: "Yorkshire Terrier", gender: "female", age: "8 weeks", price: "$1,950", image: "https://i.pinimg.com/736x/03/e3/06/03e30647a116c23d9c999ef2cdcfe891.jpg", weight: "2.8 lbs", color: "Blue & Gold", vaccination: "Up to date", size: "Teacup" },
+            { id: 25, name: "Bear", breed: "Yorkshire Terrier", gender: "male", age: "9 weeks", price: "$1,600", image: "https://i.pinimg.com/736x/f4/17/37/f417370c57491fd89c5eb79f589a75f2.jpg", weight: "3.7 lbs", color: "Black & Tan", vaccination: "Up to date", size: "Standard" },
+            { id: 26, name: "Coco", breed: "Yorkshire Terrier", gender: "female", age: "12 weeks", price: "$1,500", image: "https://i.pinimg.com/736x/f4/e8/0c/f4e80cbf35bb2a6493c3ef5d7512dae9.jpg", weight: "4.3 lbs", color: "Parti-Color", vaccination: "Up to date", size: "Standard" },
+            { id: 27, name: "Winston", breed: "Yorkshire Terrier", gender: "male", age: "11 weeks", price: "$1,800", image: "https://i.pinimg.com/1200x/b6/94/fe/b694fee65f92f05dc3c304cd8a79f8b8.jpg", weight: "4.1 lbs", color: "Blue & Tan", vaccination: "Up to date", size: "Standard" },
+
+        ];
+
+        // WhatsApp number
+        const WHATSAPP_NUMBER = "+16692480001";
+
+        // Cart - array to store added puppies
+        let cart = [];
+        let cartCount = 0;
+
+        // ========================================
+        // RENDER PUPPIES
+        // ========================================
+        function renderPuppies(puppiesToRender) {
+            const grid = document.getElementById('puppyGrid');
+            grid.innerHTML = '';
+
+            puppiesToRender.forEach((puppy) => {
+                const card = document.createElement('div');
+                card.className = 'puppy-card';
+                card.innerHTML = `
+                    <div class="puppy-image-container">
+                        ${puppy.image ?
+                        `<img src="${puppy.image}" alt="${puppy.name}" class="puppy-image" onerror="this.parentElement.innerHTML='<div class=\\'puppy-image-placeholder\\'>🐕</div>'">` :
+                        `<div class="puppy-image-placeholder">🐕</div>`
+                    }
+                    </div>
+                    <div class="puppy-info">
+                        <div class="puppy-header">
+                            <h3 class="puppy-name">${puppy.name}</h3>
+                            <div class="gender-cart">
+                                <span class="gender-badge gender-${puppy.gender}">
+                                    ${puppy.gender === 'male' ? 'Male' : 'Female'}
+                                </span>
+                                <button class="add-to-cart-btn" onclick="addToCart(${puppy.id})">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="puppy-price">${puppy.price}</div>
+
+                        <div class="puppy-details-dropdown">
+                            <div class="detail-row">
+                                <span class="detail-label">Breed:</span>
+                                <span class="detail-value">${puppy.breed}</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Age:</span>
+                                <span class="detail-value">${puppy.age}</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Weight:</span>
+                                <span class="detail-value">${puppy.weight}</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Color:</span>
+                                <span class="detail-value">${puppy.color}</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Size:</span>
+                                <span class="detail-value">${puppy.size}</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Vaccination:</span>
+                                <span class="detail-value">${puppy.vaccination}</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+
+            // Update results count
+            document.getElementById('resultsCount').textContent = puppiesToRender.length;
+        }
+
+        // ========================================
+        // FILTER FUNCTIONALITY
+        // ========================================
+        function applyFilters() {
+            const genderFilters = Array.from(document.querySelectorAll('input[type="checkbox"][value="male"], input[type="checkbox"][value="female"]'))
+                .filter(cb => cb.checked)
+                .map(cb => cb.value);
+
+            const colorFilters = Array.from(document.querySelectorAll('input[id^="color-"]'))
+                .filter(cb => cb.checked)
+                .map(cb => cb.value);
+
+            const ageFilters = Array.from(document.querySelectorAll('input[id^="age-"]'))
+                .filter(cb => cb.checked)
+                .map(cb => cb.value);
+
+            const sizeFilters = Array.from(document.querySelectorAll('input[id^="size-"]'))
+                .filter(cb => cb.checked)
+                .map(cb => cb.value);
+
+            let filtered = [...puppies];
+
+            // Apply gender filter
+            if (genderFilters.length > 0) {
+                filtered = filtered.filter(p => genderFilters.includes(p.gender));
+            }
+
+            // Apply color filter
+            if (colorFilters.length > 0) {
+                filtered = filtered.filter(p => colorFilters.includes(p.color));
+            }
+
+            // Apply age filter
+            if (ageFilters.length > 0) {
+                filtered = filtered.filter(p => {
+                    const ageNum = parseInt(p.age);
+                    return ageFilters.some(range => {
+                        if (range === '6-8') return ageNum >= 6 && ageNum <= 8;
+                        if (range === '9-12') return ageNum >= 9 && ageNum <= 12;
+                        if (range === '13+') return ageNum >= 13;
+                        return false;
+                    });
+                });
+            }
+
+            // Apply size filter
+            if (sizeFilters.length > 0) {
+                filtered = filtered.filter(p => sizeFilters.includes(p.size));
+            }
+
+            renderPuppies(filtered);
+        }
+
+        // Add event listeners to all checkboxes
+        document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+            checkbox.addEventListener('change', applyFilters);
+        });
+
+        // ========================================
+        // CUSTOM MODAL
+        // ========================================
+        function showModal(message) {
+            const modal = document.createElement('div');
+            modal.className = 'custom-modal';
+            modal.innerHTML = `
+                <div class="modal-content">
+                    <p class="modal-message">${message}</p>
+                    <button class="modal-button" onclick="this.closest('.custom-modal').remove()">OK</button>
+                </div>
+            `;
+            document.body.appendChild(modal);
+
+            // Close on outside click
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.remove();
+                }
+            });
+        }
+
+        // ========================================
+        // ADD TO CART
+        // ========================================
+        function addToCart(puppyId) {
+            // Find the puppy by ID
+            const puppy = puppies.find(p => p.id === puppyId);
+
+            if (puppy) {
+                // Add puppy to cart
+                cart.push(puppy);
+
+                // Increment cart count
+                cartCount++;
+                document.getElementById('cartCount').textContent = cartCount;
+            }
+        }
+
+        // ========================================
+        // NAV CART CLICK
+        // ========================================
+        document.getElementById('navCart').addEventListener('click', () => {
+            if (cart.length === 0) {
+                // Show a message if cart is empty
+                showModal('Your cart is empty. Please add Yorkie puppies to your cart first.');
+                return;
+            }
+
+            // Build message with all cart items
+            let message = `Hi! I would like to inquire about the following ${cart.length} Yorkshire Terrier puppy/puppies:\n\n`;
+
+            cart.forEach((puppy, index) => {
+                message += `${index + 1}. ${puppy.name}\n`;
+                message += `   - Breed: ${puppy.breed}\n`;
+                message += `   - Gender: ${puppy.gender === 'male' ? 'Male' : 'Female'}\n`;
+                message += `   - Age: ${puppy.age}\n`;
+                message += `   - Color: ${puppy.color}\n`;
+                message += `   - Size: ${puppy.size}\n`;
+                message += `   - Weight: ${puppy.weight}\n`;
+                message += `   - Price: ${puppy.price}\n\n`;
+            });
+
+            message += `I would like to proceed with my order. Thank you!`;
+
+            const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+            window.open(url, '_blank');
+        });
+
+        // ========================================
+        // WHATSAPP FLOAT
+        // ========================================
+        document.getElementById('whatsappFloat').addEventListener('click', () => {
+            const message = encodeURIComponent(
+                'Hi! I would like to inquire about your available Yorkshire Terrier puppies.'
+            );
+            const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
+            window.open(url, '_blank');
+        });
+
+        // ========================================
+        // MOBILE FILTER TOGGLE
+        // ========================================
+        const filterMenuBtn = document.getElementById('filterMenuBtn');
+        const filterContainer = document.getElementById('filterContainer');
+
+        filterMenuBtn.addEventListener('click', () => {
+            filterContainer.classList.toggle('active');
+            filterMenuBtn.classList.toggle('active');
+        });
+
+        // ========================================
+        // INITIALIZE
+        // ========================================
+        renderPuppies(puppies);
+    </script>
+</body>
+
+</html>
